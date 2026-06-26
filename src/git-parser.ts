@@ -86,14 +86,15 @@ export function getGitLog(
 
   for (const raw of rawCommits) {
     const lines = raw.trim().split('\n');
-    if (lines.length < 6) continue;
+    if (lines.length < 5) continue;
 
     const hash = lines[0];
     const shortHash = lines[1];
     const author = lines[2];
     const date = lines[3];
     const message = lines[4];
-    const bodyLines = lines.slice(5, lines.length - 1); // Remove trailing empty line
+    // Body starts at line 5 if present (after %b)
+    const bodyLines = lines.slice(5);
     const body = bodyLines.length > 0 ? bodyLines.join('\n').trim() : null;
 
     const parsed = parseCommitMessage(message);

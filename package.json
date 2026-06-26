@@ -1,0 +1,50 @@
+{
+  "name": "release-forge",
+  "version": "1.0.0",
+  "description": "Intelligent changelog and release notes generator from git history",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "release-forge": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "changelog",
+    "release-notes",
+    "git",
+    "release",
+    "generator",
+    "cli"
+  ],
+  "author": "EdgarOrtegaRamirez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EdgarOrtegaRamirez/release-forge"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "git-parse": "^2.1.0",
+    "handlebars": "^4.7.8",
+    "semver": "^7.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "@types/semver": "^7.7.0",
+    "eslint": "^9.22.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tgz
+*.log
+.env
+.env.*
+.release-forge/
+coverage/
+.nyc_output/
+*.tsbuildinfo

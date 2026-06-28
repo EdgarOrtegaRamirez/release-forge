@@ -2,6 +2,7 @@
   "name": "release-forge",
   "version": "1.0.0",
   "description": "Intelligent changelog and release notes generator from git history",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -34,8 +35,8 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "commander": "^12.1.0",
-    "git-parse": "^2.1.0",
+    "commander": "^15.0.0",
+    "git-parse": "^3.0.1",
     "handlebars": "^4.7.8",
     "semver": "^7.7.1"
   },

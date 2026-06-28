@@ -35,15 +35,17 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "@eslint/js": "^10.0.1",
     "commander": "^15.0.0",
     "git-parse": "^3.0.1",
     "handlebars": "^4.7.8",
-    "semver": "^7.7.1"
+    "semver": "^7.7.1",
+    "typescript-eslint": "^8.62.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.1",
+    "@types/node": "^26.0.1",
     "@types/semver": "^7.7.0",
-    "eslint": "^9.22.0",
+    "eslint": "^10.6.0",
     "tsx": "^4.19.3",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"

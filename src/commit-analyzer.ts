@@ -175,7 +175,7 @@ export function groupCommits(commits: Commit[], groupBy: ChangelogConfig['groupB
   const impactOrder: Record<ImpactLevel, number> = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
   const typeOrder: Record<string, number> = {};
   let order = 0;
-  for (const [key, _config] of Object.entries(TYPE_CONFIG)) {
+  for (const [key] of Object.entries(TYPE_CONFIG)) {
     typeOrder[key] = order++;
   }
 

@@ -89,7 +89,7 @@ program
       let output: string;
 
       if (config.template) {
-        const templateEngine = new TemplateEngine(config);
+        const templateEngine = new TemplateEngine();
         output = templateEngine.render(release, config.template);
       } else {
         output = generator.generate(release);
@@ -201,16 +201,16 @@ program
     console.log(`release-forge v${VERSION}`);
   });
 
-function loadConfig(options: any): ChangelogConfig {
+function loadConfig(options: Record<string, string | boolean | undefined>): ChangelogConfig {
   let config = { ...DEFAULT_CONFIG };
 
   // Override with CLI options
-  if (options.repository) config.repository = options.repository;
-  if (options.from) config.fromTag = options.from;
-  if (options.to) config.toTag = options.to;
-  if (options.output) config.outputFormat = options.output as OutputFormat;
-  if (options.outputFile) config.outputFile = options.outputFile;
-  if (options.template) config.template = options.template;
+  if (options.repository && typeof options.repository === 'string') config.repository = options.repository;
+  if (options.from && typeof options.from === 'string') config.fromTag = options.from;
+  if (options.to && typeof options.to === 'string') config.toTag = options.to;
+  if (options.output && typeof options.output === 'string') config.outputFormat = options.output as OutputFormat;
+  if (options.outputFile && typeof options.outputFile === 'string') config.outputFile = options.outputFile;
+  if (options.template && typeof options.template === 'string') config.template = options.template;
   if (options.groupBy) config.groupBy = options.groupBy as ChangelogConfig['groupBy'];
   if (options.breaking === false) config.includeBreaking = false;
   if (options.scope === false) config.includeScope = false;
@@ -218,7 +218,7 @@ function loadConfig(options: any): ChangelogConfig {
   // Load from config file
   if (options.config) {
     try {
-      const fileConfig = JSON.parse(readFileSync(options.config, 'utf-8'));
+      const fileConfig = JSON.parse(readFileSync(options.config as string, 'utf-8'));
       config = { ...config, ...fileConfig };
     } catch (error) {
       console.error(`Failed to load config file: ${(error as Error).message}`);

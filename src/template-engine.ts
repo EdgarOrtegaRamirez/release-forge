@@ -4,10 +4,10 @@
 
 import { readFileSync } from 'fs';
 import * as handlebars from 'handlebars';
-import { ReleaseNote, ChangelogConfig } from './models.js';
+import { ReleaseNote } from './models.js';
 
 // Register custom Handlebars helpers
-handlebars.registerHelper('ifEquals', function (this: Record<string, unknown>, arg1: string, arg2: string, options: any) {
+handlebars.registerHelper('ifEquals', function (this: Record<string, unknown>, arg1: string, arg2: string, options: handlebars.HelperOptions) {
   return arg1 === arg2 ? options.fn(this) : options.inverse(this);
 });
 
@@ -20,7 +20,7 @@ handlebars.registerHelper('capitalize', function (this: Record<string, unknown>,
 });
 
 export class TemplateEngine {
-  constructor(_config: ChangelogConfig) {
+  constructor() {
     // Config available for future template customization
   }
 
